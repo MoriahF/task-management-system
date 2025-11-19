@@ -1,0 +1,40 @@
+spring:
+  config:
+    activate:
+      on-profile: test
+
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=PostgreSQL;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+        dialect: org.hibernate.dialect.H2Dialect
+
+  flyway:
+    enabled: false
+
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration
+
+aws:
+  cognito:
+    region: eu-north-1
+    user-pool-id: test-pool-id
+    client-id: test-client-id
+    issuer-uri: http://localhost:8080
+
+logging:
+  level:
+    root: WARN
+    com.taskmanagement: INFO
+    org.springframework.security: WARN
+    org.hibernate.SQL: WARN
