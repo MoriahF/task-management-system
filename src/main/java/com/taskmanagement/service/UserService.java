@@ -54,14 +54,14 @@ public class UserService {
                 });
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public UserResponse getCurrentUserProfile() {
         log.debug("Fetching current user profile");
         User user = getOrCreateCurrentUser();
         return UserResponse.fromEntity(user);
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public UserResponse getUserProfileById(Long userId) {
         log.debug("Fetching user profile for user ID: {}", userId);
 
@@ -76,7 +76,7 @@ public class UserService {
         return UserResponse.fromEntity(user);
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public PageResponse<UserResponse> getAllUsers(int page, int size) {
         log.debug("Fetching all users - page: {}, size: {}", page, size);
 
